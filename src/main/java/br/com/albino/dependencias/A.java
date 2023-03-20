@@ -10,14 +10,15 @@ public class A {
     //Field:  Através de propriedade com o @
     //Construtor: Fazer um construtor que irá receber a classe para instaciar
     //Setter: Através de setClasse()
-//    @Autowired
-//    private B b;
+    @Autowired
+    private B b;
 
 //    private MinhaPriImple priImple;
-    private MinhaInterface minhaInterface;
+//    private MinhaInterface minhaInterface;
 
     public void metodoA() {
-        minhaInterface.metodo();
+//        minhaInterface.metodo();
+        b.metodoB();
     }
 
 }
