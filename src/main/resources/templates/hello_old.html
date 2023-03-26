@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Página de Hello <span th:text="${produtos}"></span></h1>
+<br>
+<br>
+<div th:text="${produtos}"></div>
+<br>
+<br>
+<h2 th:text="${produtos}"></h2>
+
+<h2>Linguagens: <span th:text="${produtos}"></span></h2>
+<br>
+<br>
+<ul>
+    <li th:each="produto,i : ${produtos}" th:text="${produto}"></li>
+</ul>
+<br>
+<br>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Nome</td>
+        <td>Preço</td>
+        <td>Em estoque</td>
+        <td>Validade</td>
+    </tr>
+    <tr th:each="produto:${produtos}">
+        <!--            <td th:text="${produto.id} == 1 ? 'Id 1' : 'Id inválido'"></td>-->
+        <td th:text="${produto.id}"></td>
+        <!--            <td th:if="${produto.nome != null}" th:text="${produto.nome}"></td>-->
+        <!--            <td th:if="${produto.nome == null}" th:text="_"></td>-->
+        <td>
+            <span th:if="${produto.nome != null}" th:text="${produto.nome}"></span>
+            <span th:if="${produto.nome == null}" th:text="_"></span>
+        </td>
+        <td th:text="${produto.preco}"></td>
+        <td th:text="${produto.emEstoque} ? 'Estoque' : 'Falta'"></td>
+        <td><span th:text="${#temporals.format(produto.validade, 'dd/MM/yyy')}"></span></td>
+    </tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--Link absoluto:Envia a requisição para outro servidor! Contém o protocolo.-->
+<a th:href="@{https://www.google.com/}" target="_blank">Página</a>
+
+<!--Link relativo:Relativo ao sei contexto (servidor), nesse caso, o localhost:8080.-->
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<span th:replace="~{rodape::rodape}"></span>
+<!--Ou-->
+<span th:replace="rodape"></span>
+<br>
+<!--O Include mantem a tag que chama, só inclui o conteúdo.-->
+
+<span th:include="~{rodape::rodape}"></span>
+<!-- Ou-->
+<span th:include="rodape"></span>
+<br>
+
+<!--Já o insert pega o conteúdo e adiciona na tag selecionada.-->
+
+<span th:insert="~{rodape::rodape}"></span>
+<!-- Ou-->
+<span th:insert="rodape"></span>
+
+
+</body>
+</html>
+
