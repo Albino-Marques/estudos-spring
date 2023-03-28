@@ -1,6 +1,8 @@
 package br.com.albino.restaurante.controller;
 
 import br.com.albino.restaurante.dao.ProdutoDao;
+import br.com.albino.restaurante.model.Categoria;
+import br.com.albino.restaurante.model.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,14 +26,21 @@ public class ProdutoController {
     }
 
     @GetMapping("/form")
-    public String form(){
+    public String form(Model model){
+        model.addAttribute("categorias", Categoria.values());
         return "form";
     }
 
     @PostMapping("/cadastra")
-    public void cadastra(){
-        System.out.println("******** Método de cadastro *********");
-    }
+    public String cadastra(Produto produto, Model model){
+
+        this.dao.cadastra(produto);
+
+
+        return lista(model); // Esse método está em lista logo acima.
+    } // Essa forma utiliza o redirecionamento dentro do servidor, o Forward.
+
+}
 
 //    @PostMapping("/um")
 //    public String cadastraProdutos(){
@@ -44,7 +53,6 @@ public class ProdutoController {
 //        System.out.println("Página home2");
 //        return "home2";
 //    }
-}
 
 // -> ServletDispatcher -> Controller
 // Controller -> ServletDispatcher

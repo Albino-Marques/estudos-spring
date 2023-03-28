@@ -5,11 +5,17 @@
     <title>Forms Produtos</title>
 </head>
     <body>
+
+    <h2>Cadastro de Produtos</h2>
+
         <form action="/produto/cadastra" method="post"><br>
             Id: <input type="text" name="id"><br>
             Nome: <input type="text" name="nome"><br>
             Descrição: <input type="text" name="descricao"><br>
-<!--            Categoria:-->
+            Categoria:
+            <select name="categoria">
+                <option th:each="categoria : ${categorias}" th:text="${categoria.descricao}" th:value="${categoria}"></option>
+            </select>
             Preço: <input type="text" name="preco"><br>
 
             <input type="submit" value="Cadastra"><br>
