@@ -15,9 +15,6 @@ public class HelloController_old {
     @GetMapping("/hello")
     public String hello(Model model) {
 
-        String nomes = "Java";
-
-
         model.addAttribute("produtos", Arrays.asList(
                 new ProdutoSimples(1, "Celular", BigDecimal.TEN, true, LocalDate.now()),
                 new ProdutoSimples(2, "Notebook", new BigDecimal(20), false, LocalDate.of(2023,04,04)),

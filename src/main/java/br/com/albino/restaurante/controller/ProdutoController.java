@@ -41,6 +41,9 @@ public class ProdutoController {
     } // Essa forma utiliza o redirecionamento dentro do servidor, o Forward.
 
 }
+// DTO -> Data Transfer Object
+// Classe de infraestrutura (recebe request e response) -> Modelos
+// Produto -> Objeto de domínio, objetos de domínio devem ser PROTEGIDOS.
 
 //    @PostMapping("/um")
 //    public String cadastraProdutos(){
